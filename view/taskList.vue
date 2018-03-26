@@ -63,7 +63,7 @@
             },
             initData:function () {
                 this.progressTask = JSON.parse(localStorage.getItem('progress'));
-                this.completeTask = JSON.parse(localStorage.getItem('finish'));
+                this.completeTask = (JSON.parse(localStorage.getItem('finish')))?JSON.parse(localStorage.getItem('finish')):[];
             },
             status:function (status) {
                 let styleStr = '';

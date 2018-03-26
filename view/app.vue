@@ -66,24 +66,29 @@
             },
             searchTask:function(){
                 let completeTask = JSON.parse(localStorage.getItem('finish'));
-                for(let i=0;i < completeTask.length;i++){
-                    if( this.searchItem !='' && completeTask[i].taskName.search(this.searchItem) >=0 ){
-                        completeTask[i].status = 'search';
-                    }else{
-                        completeTask[i].status = '';
+                if(completeTask){
+                    for(let i=0;i < completeTask.length;i++){
+                        if( this.searchItem !='' && completeTask[i].taskName.search(this.searchItem) >=0 ){
+                            completeTask[i].status = 'search';
+                        }else{
+                            completeTask[i].status = '';
+                        }
                     }
+                    localStorage.setItem('finish',JSON.stringify(completeTask));
                 }
-                localStorage.setItem('finish',JSON.stringify(completeTask));
-
+            
                 let progressTask = JSON.parse(localStorage.getItem('progress'));
-                for(let i=0;i < progressTask.length;i++){
-                    if( this.searchItem !='' && progressTask[i].taskName.search(this.searchItem) >=0 ){
-                        progressTask[i].status = 'search';
-                    }else{
-                        progressTask[i].status = '';
+                if(progressTask){
+                    for(let i=0;i < progressTask.length;i++){
+                        if( this.searchItem !='' && progressTask[i].taskName.search(this.searchItem) >=0 ){
+                            progressTask[i].status = 'search';
+                        }else{
+                            progressTask[i].status = '';
+                        }
                     }
+                    localStorage.setItem('progress',JSON.stringify(progressTask));
                 }
-                localStorage.setItem('progress',JSON.stringify(progressTask));
+                
             }
         }
     }
@@ -92,8 +97,8 @@
 
 <style>
     .el-header, .el-footer {
-        background-color: #B3C0D1;
-        color: #333;
+        background-color: rgb(84, 92, 100);
+        color: #fff;
         width: 1200px;
         margin: 0 auto;
         line-height: 60px;
